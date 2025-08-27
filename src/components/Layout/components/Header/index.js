@@ -26,6 +26,8 @@ import AccountItem from '~/components/AccountItem';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
+import { UploadIcon, HomeIcon, MessageIcon } from '~/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -141,9 +143,17 @@ function Header() {
                     {currentUser ? (
                         <>
                             <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
-                                <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudArrowUp} />
-                                </button>
+                                <>
+                                    <button className={cx('action-btn')}>
+                                        <HomeIcon />
+                                    </button>
+                                    <button className={cx('action-btn')}>
+                                        <UploadIcon />
+                                    </button>
+                                    <button className={cx('action-btn')}>
+                                        <MessageIcon />
+                                    </button>
+                                </>
                             </Tippy>
                         </>
                     ) : (
@@ -155,10 +165,11 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/a511a6dc253030c617e671db6b0dbc1d~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=5e01407e&x-expires=1756393200&x-signature=9U8up9LHNEBJJut78oCEQCvKFAc%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my2"
                                 alt="Thai Thanh Quan"
+                                fallBack="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/489690770_1191289149315850_8955359487974452286_n.jpg?stp=dst-jpg_s600x600_tt6&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=GYjTJk_25okQ7kNvwFKkObx&_nc_oc=AdkYA5n9FnwlHnvcsQiDKWY8b3YPJM0Op1MVIoq_72Zsp7rXFudWup2MCfrIAN4cK54&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=fHUWJa0QIPFc0V3YgmsEbw&oh=00_AfVjCMJXn1zTh9_wM-DyGsbQADqqOuMQytKQf5vlthXa1g&oe=68B4EF83"
                             />
                         ) : (
                             <>
